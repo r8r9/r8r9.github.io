@@ -18,16 +18,6 @@
       align-items: center;
     }
 
-    /* Styles for the close button */
-    #closeBtn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      cursor: pointer;
-      color: white;
-      font-size: 24px;
-    }
-
     /* Styles for the message */
     #message {
       color: white;
@@ -39,40 +29,47 @@
       width: 80%;
       height: 80%;
       border: none;
+      transition: width 0.5s, height 0.5s; /* Smooth transition */
+    }
+
+    /* Styles for full screen */
+    #fluidSimulator.fullscreen {
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
 <body>
   <div id="overlay">
-    <span id="closeBtn">&times;</span>
     <div id="message">
       <h1>Use this site when the original is blocked.</h1>
       <p>Enjoy a Fluid Particle Simulation</p>
     </div>
-    <iframe id="fluidSimulator" src="https://r8r9.github.io/f/"></iframe>
+    <iframe id="fluidSimulator" src="https://haxiomic.github.io/projects/webgl-fluid-and-particles/"></iframe>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const overlay = document.getElementById("overlay");
-      const closeBtn = document.getElementById("closeBtn");
+      const fluidSimulator = document.getElementById("fluidSimulator");
 
-      // Show the overlay when needed
-      function showOverlay() {
-        overlay.style.display = "flex";
-      }
-
-      // Close the overlay when close button is clicked
-      closeBtn.addEventListener("click", function() {
-        overlay.style.display = "none";
+      // Toggle full screen for the iframe
+      fluidSimulator.addEventListener("click", function() {
+        if (fluidSimulator.classList.contains("fullscreen")) {
+          fluidSimulator.classList.remove("fullscreen");
+          overlay.style.display = "flex";
+        } else {
+          fluidSimulator.classList.add("fullscreen");
+          overlay.style.display = "none";
+        }
       });
 
       // Check if the original site (https://r8r7.github.io) is blocked
-      const originalSite = "https://r8r7.github.io"; // Replace with your original site URL
+      const originalSite = "https://r8r7.github.io"; // Replace with your actual original site URL
       const isBlocked = !navigator.onLine || window.location.href !== originalSite;
 
       if (isBlocked) {
-        showOverlay(); // Show the overlay if the original site is blocked
+        overlay.style.display = "flex"; // Show the overlay if the original site is blocked
       }
     });
   </script>
