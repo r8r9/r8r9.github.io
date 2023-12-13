@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blocked Site</title>
+  <style>
+    /* Styles for the overlay */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7); /* Gray transparent background */
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Styles for the close button */
+    #closeBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+    }
+
+    /* Styles for the message */
+    #message {
+      color: white;
+      text-align: center;
+    }
+
+    /* Styles for the iframe */
+    #fluidSimulator {
+      width: 80%;
+      height: 80%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="overlay">
+    <span id="closeBtn">&times;</span>
+    <div id="message">
+      <h1>Use this site when the original is blocked.</h1>
+      <p>Enjoy a Fluid Particle Simulation</p>
+    </div>
+    <iframe id="fluidSimulator" src="https://r8r9.github.io/f/"></iframe>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const overlay = document.getElementById("overlay");
+      const closeBtn = document.getElementById("closeBtn");
+
+      // Show the overlay when needed
+      function showOverlay() {
+        overlay.style.display = "flex";
+      }
+
+      // Close the overlay when close button is clicked
+      closeBtn.addEventListener("click", function() {
+        overlay.style.display = "none";
+      });
+
+      // Check if the original site (https://r8r7.github.io) is blocked
+      const originalSite = "https://r8r7.github.io"; // Replace with your original site URL
+      const isBlocked = !navigator.onLine || window.location.href !== originalSite;
+
+      if (isBlocked) {
+        showOverlay(); // Show the overlay if the original site is blocked
+      }
+    });
+  </script>
+</body>
+</html>
