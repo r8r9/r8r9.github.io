@@ -2,77 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Blocked Site</title>
-  <style>
-    /* Styles for the overlay */
-    #overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7); /* Gray transparent background */
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Styles for the message */
-    #message {
-      color: white;
-      text-align: center;
-    }
-
-    /* Styles for the iframe */
-    #fluidSimulator {
-      width: 80%;
-      height: 80%;
-      border: none;
-      transition: width 0.5s, height 0.5s; /* Smooth transition */
-    }
-
-    /* Styles for full screen */
-    #fluidSimulator.fullscreen {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verified.</title>
 </head>
 <body>
-  <div id="overlay">
-    <div id="message">
-      <h1>Use this site when the original is blocked. Press Ctrl+D To Bookmark.</h1>
-      <p>Enjoy a Fluid Particle Simulation
-      Stay Tuned for All The Original Games Back.</p>
-    </div>
-    <iframe id="fluidSimulator" src="https://r8r9.github.io/f/"></iframe>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const overlay = document.getElementById("overlay");
-      const fluidSimulator = document.getElementById("fluidSimulator");
-
-      // Toggle full screen for the iframe
-      fluidSimulator.addEventListener("click", function() {
-        if (fluidSimulator.classList.contains("fullscreen")) {
-          fluidSimulator.classList.remove("fullscreen");
-          overlay.style.display = "flex";
-        } else {
-          fluidSimulator.classList.add("fullscreen");
-          overlay.style.display = "none";
-        }
-      });
-
-      // Check if the original site (https://r8r7.github.io) is blocked
-      const originalSite = "https://r8r7.github.io"; // Replace with your actual original site URL
-      const isBlocked = !navigator.onLine || window.location.href !== originalSite;
-
-      if (isBlocked) {
-        overlay.style.display = "flex"; // Show the overlay if the original site is blocked
-      }
-    });
-  </script>
+  <h1>OAuth Redirect</h1>
+  <p>Go back to Bypass 2</p>
 </body>
 </html>
