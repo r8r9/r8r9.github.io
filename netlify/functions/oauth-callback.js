@@ -6,14 +6,17 @@ exports.handler = async (event, context) => {
   const code = event.queryStringParameters.code;
   
   try {
+    const clientId = process.env.CLIENT_ID;
+    const clientSecret = process.env.CLIENT_SECRET;
+
     // Exchange code for an access token
     const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', null, {
       params: {
         grant_type: 'authorization_code',
         code: code,
         redirect_uri: 'https://verifyoauth.netlify.app/oauth-callback',
-        client_id: 'YOUR_CLIENT_ID',
-        client_secret: 'YOUR_CLIENT_SECRET'
+        client_id: clientId,
+        client_secret: clientSecret
       },
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -37,7 +40,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
-      body: "OAuth2 callback received! User ID logged.",
+      body: "OAuth2 callback received!",
     };
 
   } catch (error) {
